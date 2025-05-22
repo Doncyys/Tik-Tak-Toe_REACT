@@ -37,9 +37,12 @@ const TicTacToe = () => {
   const [xIsNext, setXIsNext] = useState(true);
 
   const winner = calculateWinner(squares);
+  const isDraw = !winner && squares.every(square => square !== null);
   const status = winner
     ? `Laimėjo: ${winner}`
-    : `Kitas žaidėjas: ${xIsNext ? 'X' : 'O'}`;
+    : isDraw
+      ? 'Lygiosios'
+      : `Kitas žaidėjas: ${xIsNext ? 'X' : 'O'}`;
 
   const handleClick = (index) => {
     if (squares[index] || winner) return;
